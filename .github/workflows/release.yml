@@ -1,0 +1,36 @@
+name: Release Obsidian Plugin
+
+# Triggers whenever you push a tag like "1.0.0" (no "v" prefix — BRAT and
+# Obsidian expect the tag to match the version in manifest.json exactly).
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Create GitHub Release with plugin assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            main.js
+            manifest.json
+            versions.json
+          generate_release_notes: true
