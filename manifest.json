@@ -1,0 +1,10 @@
+{
+	"id": "eit-smart-linker",
+	"name": "Eit Smart Linker",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Alias seeding and smart cross-note linking for the Eit campaign vault.",
+	"author": "Kesean",
+	"authorUrl": "",
+	"isDesktopOnly": false
+}
